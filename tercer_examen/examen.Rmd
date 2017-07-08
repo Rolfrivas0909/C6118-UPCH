@@ -2,8 +2,7 @@
 title: "Análisis de las condiciones del océano frente a Perú durante mi primer año de vida"
 author: "Rolf Rivas"
 output:
-  html_document: default
-  pdf_document: default
+  html_document
 ---
 ## Introducción
 Se analizó la temperatura y salinidad del océano frente a Perú para el año 1991. Durante los años 1991-1992 se registro un niño, el cual no fue considerado como extraordinario (SENAMHI 2014; Tahakashi, 2016).
