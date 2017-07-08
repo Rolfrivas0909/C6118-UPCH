@@ -33,8 +33,18 @@ lon = ncvar_get(nc, "longitude") - 360
 ```
 **Creación de gráfico**
 ```{r}
-image.map(lon, lat, sst[,,1])
+sst_promedio=apply(sst[,,1:552], MARGIN = c(1,2), FUN=mean, na.rm = TRUE)
+image.map(lon, lat, sst_promedio)
+title("PROMEDIO SST° 1959-2005")
 ```
+```{r}
+sst_promedio=apply(sst[,,1:552], MARGIN = c(1,2), FUN =mean, na.rm = TRUE)
+sst_ano1991=apply(sst[,,384:396], MARGIN = c(1,2), FUN = mean, na.rm = TRUE)
+anomalia_sst=sst_promedio-sst_ano1991
+image.map(lon, lat, anomalia_sst)
+title("Anomalías SST año 1991")
+```
+
 
 
 ## Conclusiones
