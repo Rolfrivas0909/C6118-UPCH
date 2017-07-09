@@ -5,53 +5,77 @@ output:
   html_document
 ---
 ## Introducción
-Se analizó la temperatura y salinidad del océano frente a Perú para el año 1991. Durante los años 1991-1992 se registro un niño, el cual no fue considerado como extraordinario (SENAMHI 2014; Tahakashi, 2016).
+La temperatura y salinidad son las variables más usadas en oceanografía, ya que definen masas de agua y su densidad. Anomalias en la temperatura y salinidad tienen efecto en las comunidades biológicas como el fitoplancton. Durante los años 1991-1992 se registro un Niño, el cual fue considerado como moderado (SENAMHI 2014; Tahakashi, 2016). El objetivo de este trabajo es analizar la temperatura, salinidad y fitoplancton del océano frente a Perú para el año **1991**.
 
 ## Materiales y métodos
-Se usaron las variables:  
+### Materiales  
+* Para realizar los análisis se usó los datos de temperatura superficial del mar(SST), salinidad (SSS) y fitoplancton (phy) de la liberia netCDF (**Network Common Data Form**). Además se usó el paquete estadístico R y los paquetes de R: markdown, kali, ncdf4 y fields.
+ 
 
+### Métodos  
+* Se realizaron comparaciones entre los promedios totales de las variables y las anomalias.  
 
-***-Temperatura superficicial del mar (SST)***  
-
-
-***-Salinidad (SSS)***
+     + Las anomalias se definieron como: Anomalias=Promedio(todos los años)-Promedio(año 1991)
 
 ## Resultados y discusión
-
-```{r}
-
-```
 
 ```{r}
 library(ncdf4)
 library(fields)
 library(kali)
-nc=nc_open("datos/sst.nc4")
-sst = ncvar_get(nc, "to")
-lat = ncvar_get(nc, "latitude")
-lon = ncvar_get(nc, "longitude") - 360
 ```
-**Creación de gráfico**
+
+###**Temperatura promedio y anomalia para año 1991**
 ```{r}
+#variable sst
+nc_sst=nc_open("datos/sst.nc4")
+sst = ncvar_get(nc_sst, "to")
+lat = ncvar_get(nc_sst, "latitude")
+lon = ncvar_get(nc_sst, "longitude") - 360
+par(mfrow=c(1,2))
+#Grafico promedio de SST
 sst_promedio=apply(sst[,,1:552], MARGIN = c(1,2), FUN=mean, na.rm = TRUE)
 image.map(lon, lat, sst_promedio)
 title("PROMEDIO SST° 1959-2005")
-```
-```{r}
-sst_promedio=apply(sst[,,1:552], MARGIN = c(1,2), FUN =mean, na.rm = TRUE)
+
+#Grafico promedio de año 1991
 sst_ano1991=apply(sst[,,384:396], MARGIN = c(1,2), FUN = mean, na.rm = TRUE)
 anomalia_sst=sst_promedio-sst_ano1991
 image.map(lon, lat, anomalia_sst)
 title("Anomalías SST año 1991")
 ```
 
+###**Salinidad promedio y anomalia para año 1991**
+```{r}
+##variable sss
+nc_sss=nc_open("datos/sss.nc4")
+sss=ncvar_get(nc_sss,"so")
+lat=ncvar_get(nc_sss,"latitude")
+lon=ncvar_get(nc_sss,"longitude") - 360
+par(mfrow=c(1,2))
+#Grafico promedio de SSS
 
+sss_promedio=apply(sss[,,1:552], MARGIN = c(1,2), FUN=mean, na.rm = TRUE)
+image.map(lon, lat, sss_promedio)
+title("PROMEDIO SALINIDAD° 1959-2005")
+
+#Grafico promedio de año SSS 1991
+
+sss_ano1991=apply(sss[,,384:396], MARGIN = c(1,2), FUN = mean, na.rm = TRUE)
+anomalia_sss=sss_promedio-sss_ano1991
+image.map(lon, lat, anomalia_sss)
+title("Anomalías salinidad año 1991")
+```
+
+
+###***Fitoplancton promedio y anomalia para año 1991**.
 
 ## Conclusiones
+Durante el año 1991 hubo anomalia positiva de la temperatura superficial del mar y una anomalia negativa de la salinidad del mar en Perú.
 
 ## Referencias
 
-SENAMHI. 2014. El fenomeno El Niño en el Perú. Link: http://www.minam.gob.pe/wp-content/uploads/2014/07/Dossier-El-Ni%C3%B1o-Final_web.pdf
+-(SENAMHI. 2014. El fenomeno El Niño en el Perú.)[http://www.minam.gob.pe/wp-content/uploads/2014/07/Dossier-El-Niño-Final_web.pdf]
 
-Takahashi, K. & Dewitte, B. 2016. Clim Dyn 46: 1627. doi:10.1007/s00382-015-2665-3
+-(Takahashi, K. & Dewitte, B. 2016.Clim Dyn 46: 1627.)[https://link.springer.com/article/10.1007/s00382-015-2665-3]
 
