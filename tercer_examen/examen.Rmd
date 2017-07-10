@@ -65,7 +65,7 @@ promsst=apply(sst[,,385:396], MARGIN=3,FUN=mean, na.rm=TRUE)
 promsss=apply(sss[,,385:396], MARGIN=3,FUN=mean, na.rm=TRUE)
 promlphy=apply(lphy[,,385:396], MARGIN=3,FUN=mean, na.rm=TRUE)
 promsphy=apply(sphy[,,385:396], MARGIN=3,FUN=mean, na.rm=TRUE)
-plot(tiempo,promsst,type="l", col="blue",las=1, xlab="tiempo",ylab="temperatura promedio(°C)")
+plot(tiempo,promsst,type="l", col="blue",las=1, xlab="tiempo",ylab="temperatura promedio(C)")
 plot(tiempo,promsss,type="l", col="red",las=1, xlab="tiempo",ylab="salinidad promedio(PSU)")
 plot(tiempo,promlphy,type="l", col="orange",las=1, xlab="tiempo",ylab="Fitoplancton grande(molC. m-2.s-1)")
 plot(tiempo,promsphy,type="l", col="orange",las=1, xlab="tiempo",ylab="Fitoplancton pequeño(molC. m-2.s-1)")
@@ -75,7 +75,7 @@ plot(tiempo,promsphy,type="l", col="orange",las=1, xlab="tiempo",ylab="Fitoplanc
 
 En los gráficos se puede observar mayor temperatura y productividad para fitoplancton pequeño y grande durante verano, sin embargo la salinidad es inversa a estas variables (fig 2).
 
-####**Temperatura superficial del mar promedio durante los años 1959-2005 y anomalia para año 1991.**
+####**Temperatura superficial del mar promedio durante los años 1959-2005 y anomalia para a?o 1991.**
 ```{r}
 #variable sst
 nc_sst=nc_open("datos/sst.nc4")
@@ -93,11 +93,11 @@ title("Promedio SST (°C) 1959-2005")
 sst_ano1991=apply(sst[,,385:396], MARGIN = c(1,2), FUN = mean, na.rm = TRUE)
 anomalia_sst=sst_promedio-sst_ano1991
 image.map(lon, lat, anomalia_sst)
-title("Anomalías SST (°C) año 1991")
+title("Anomalias SST (°C) año 1991")
 ```
-  **Figura 3**. Promedio de la temperatura superficial del mar durante los años 1959-2005 y anomalía de la temperatura superficial del mar durante el año 1991.
+  **Figura 3**. Promedio de la temperatura superficial del mar durante los años 1959-2005 y anomalias de la temperatura superficial del mar durante el año 1991.
 
-No hubo anomalía de la temperatura superficial del mar en las zonas central y norte del pacífico frente a Perú, sin embargo se puede observar una pequeña anomalía positiva en la zona sur (fig 3).
+No hubo anomalía de la temperatura superficial del mar en las zonas central y norte del pacífico frente a Perú, sin embargo se puede observar una pequeña anomal?a positiva en la zona sur (fig 3).
 
 
 ###**Salinidad promedio durante los años 1959-2005 y anomalia para año 1991.**
@@ -108,13 +108,13 @@ sss=ncvar_get(nc_sss,"so")
 lat=ncvar_get(nc_sss,"latitude")
 lon=ncvar_get(nc_sss,"longitude") - 360
 par(mfrow=c(1,2))
-#Grafico promedio de SSS
+#Gráfico promedio de SSS
 
 sss_promedio=apply(sss[,,1:552], MARGIN = c(1,2), FUN=mean, na.rm = TRUE)
 image.map(lon, lat, sss_promedio)
 title("Promedio salinidad (PSU) 1959-2005")
 
-#Grafico promedio de año SSS 1991
+#Grafico promedio de a?o SSS 1991
 
 sss_ano1991=apply(sss[,,384:396], MARGIN = c(1,2), FUN = mean, na.rm = TRUE)
 anomalia_sss=sss_promedio-sss_ano1991
@@ -158,23 +158,23 @@ image.map(lon_lphy, lat_lphy, lphy_ano1991)
 title("Fito grande año 1991(molC. m-2.s-1)")
 ```
 
-  **Figura 5**: Promedio de la productividad de fitoplancton grande y pequeño durante los años 1959-2005 y la anomalía durante el año 1991.  
+  **Figura 5**: Promedio de la productividad de fitoplancton grande y pequeño durante los a?os 1959-2005 y la anomal?a durante el año 1991.  
 
 No hubo grandes anomalías de la productividad de fitoplancton grande y pequeño, sin embargo se puede ver una anomalía de fitoplancton grande en la zona centro-norte (fig 5).
 
 
 #### Discusión
 
-El año 1991 tiene un pico positivo y negativo de temperatura superficial del mar normal respecto a los otros años que se dieron niños fuertes o extraordinarios como los 1997-1997 y 1982-1983 (Takahashi K, 2011). Sin embargo a finales de 1991 y durante 1992 se puede observar un pico de temperatura, que sería donde se da la mayor intensidad del denominado Niño 1991-1992 (SENAMHI 2014; Tahakashi, 2016).  
-La temperatura y productividad fueron normales durante el año con un pico durante verano y una disminución durante invierno (Morón,2000). La salinidad también fue una variable normal, ya que tiende a disminuir con un aumento de la temperatura superficial del mar durante verano.
+El año 1991 tiene un pico positivo y negativo de temperatura superficial del mar normal respecto a los otros años que se dieron niños fuertes o extraordinarios como los 1997-1997 y 1982-1983 (Takahashi K, 2011). Sin embargo a finales de 1991 y durante 1992 se puede observar un pico de temperatura, donde se da la mayor intensidad del denominado Niño 1991-1992 (SENAMHI 2014; Tahakashi, 2016).  
+La temperatura y productividad fueron normales durante el año con un pico durante verano y una disminución durante invierno (Moran,2000). La salinidad también fue una variable normal, ya que tiende a disminuir con un aumento de la temperatura superficial del mar durante verano.
 
 ## Conclusión
 
-No hubo grandes anomalías de temperatura superficial del mar, salinidad y productividad  durante el año 1991, por lo tanto es un año normal, sin embargo es previo a El Niño 1992. 
+No hubo grandes anomalias de temperatura superficial del mar, salinidad y productividad  durante el año 1991, por lo tanto es un año normal, sin embargo es previo a El Niño 1992. 
 
 ## Referencias
 
--(Morón O. 2000. Características del ambiente marino frente a la costa peruana. Bol. Inst. Mar Perú 19(1-2):179-204.)[http://www.imarpe.gob.pe/paita/publicaciones/caract_del_amb_marino.pdf]
+-(Morán O. 2000. Caracterásticas del ambiente marino frente a la costa peruana. Bol. Inst. Mar Perú 19(1-2):179-204.)[http://www.imarpe.gob.pe/paita/publicaciones/caract_del_amb_marino.pdf]
 
 -(SENAMHI. 2014. El fenomeno El Niño en el Perú.)[http://www.minam.gob.pe/wp-content/uploads/2014/07/Dossier-El-Niño-Final_web.pdf]
 
