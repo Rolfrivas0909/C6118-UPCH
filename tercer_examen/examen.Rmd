@@ -1,15 +1,15 @@
 ---
-title: "Análisis de las condiciones del océano frente a Perú durante el año 1991"
+title: Análisis de las condiciones del océano frente a Perú durante el año 1991 y relación de la productividad primaria y la temperatura superficial del mar.
 author: "Rolf Rivas"
 output:
   html_document
 ---
 ## Introducción
-La temperatura y salinidad son las variables más usadas en oceanografía, ya que definen masas de agua y su densidad. Anomalias en la temperatura y salinidad tienen efecto en las comunidades biológicas como el plancton, anchoveta, depredadores superiores entre otros. Durante los años 1991-1992 se registro un Niño, el cual fue considerado como moderado (SENAMHI 2014; Tahakashi, 2016). El objetivo de este trabajo es analizar la temperatura, salinidad y fitoplancton del océano frente a Perú para el año **1991**.
+La temperatura y salinidad son las variables más usadas en oceanografía, ya que definen masas de agua y su densidad. Anomalias en la temperatura y salinidad tienen efecto en las comunidades biológicas como el plancton, anchoveta, depredadores superiores entre otros. Durante los años 1991-1992 se registro un Niñoo, el cual fue considerado como moderado (SENAMHI 2014; Tahakashi, 2016). El objetivo de este trabajo es analizar la temperatura, salinidad y fitoplancton del océano frente a Perú para el año **1991**.
 
 ## Materiales y métodos
 ### Materiales  
-* Para realizar los análisis se usó los datos de temperatura superficial del mar(SST), salinidad (SSS) y fitoplancton (phy) grande y pequeño de la liberia netCDF (**Network Common Data Form**). Además se usó el paquete estadístico R y los paquetes de R: markdown, kali, ncdf4 y fields.
+* Para realizar los análisis se usó los datos de temperatura superficial del mar(SST), salinidad (SSS) y fitoplancton (phy) grande y pequeñoo de la liberia netCDF (**Network Common Data Form**). Además se usó el paquete estadistico R y los paquetes de R: markdown, kali, ncdf4 y fields.
  
 
 ### Métodos  
@@ -17,7 +17,7 @@ La temperatura y salinidad son las variables más usadas en oceanografía, ya qu
 
      + Las anomalias se definieron como: Anomalias=Promedio(todos los años)-Promedio(año 1991)
 
-* Se realizarón gráficos de variación temporal de temperatura superficial del mar, salinidad y fitoplancton durante el año 1991.
+* Se realizaron gráficos de variación temporal de temperatura superficial del mar, salinidad y fitoplancton durante el año 1991.
 
 * Se realizó una serie de tiempo de temperatura superficial del mar entre los años 1959-2005.
 
@@ -31,7 +31,7 @@ library(fields)
 library(kali)
 ```
 
-####**Serie de tiempo del promedio de la temperatura superficial del mar durante los años 1959 y 2005.**
+####**Serie de tiempo del promedio de la temperatura superficial del mar durante los aÃ±os 1959 y 2005.**
 ```{r}
 nc_sst=nc_open("datos/sst.nc4")
 sst = ncvar_get(nc_sst, "to")
@@ -65,7 +65,7 @@ promsst=apply(sst[,,385:396], MARGIN=3,FUN=mean, na.rm=TRUE)
 promsss=apply(sss[,,385:396], MARGIN=3,FUN=mean, na.rm=TRUE)
 promlphy=apply(lphy[,,385:396], MARGIN=3,FUN=mean, na.rm=TRUE)
 promsphy=apply(sphy[,,385:396], MARGIN=3,FUN=mean, na.rm=TRUE)
-plot(tiempo,promsst,type="l", col="blue",las=1, xlab="tiempo",ylab="temperatura promedio(C)")
+plot(tiempo,promsst,type="l", col="blue",las=1, xlab="tiempo",ylab="temperatura promedio(°C)")
 plot(tiempo,promsss,type="l", col="red",las=1, xlab="tiempo",ylab="salinidad promedio(PSU)")
 plot(tiempo,promlphy,type="l", col="orange",las=1, xlab="tiempo",ylab="Fitoplancton grande(molC. m-2.s-1)")
 plot(tiempo,promsphy,type="l", col="orange",las=1, xlab="tiempo",ylab="Fitoplancton pequeño(molC. m-2.s-1)")
@@ -75,7 +75,7 @@ plot(tiempo,promsphy,type="l", col="orange",las=1, xlab="tiempo",ylab="Fitoplanc
 
 En los gráficos se puede observar mayor temperatura y productividad para fitoplancton pequeño y grande durante verano, sin embargo la salinidad es inversa a estas variables (fig 2).
 
-####**Temperatura superficial del mar promedio durante los años 1959-2005 y anomalia para a?o 1991.**
+####**Temperatura superficial del mar promedio durante los años 1959-2005 y anomalia para año 1991.**
 ```{r}
 #variable sst
 nc_sst=nc_open("datos/sst.nc4")
@@ -97,7 +97,7 @@ title("Anomalias SST (°C) año 1991")
 ```
   **Figura 3**. Promedio de la temperatura superficial del mar durante los años 1959-2005 y anomalias de la temperatura superficial del mar durante el año 1991.
 
-No hubo anomalía de la temperatura superficial del mar en las zonas central y norte del pacífico frente a Perú, sin embargo se puede observar una pequeña anomal?a positiva en la zona sur (fig 3).
+No hubo anomalía de la temperatura superficial del mar en las zonas central y norte del pacífico frente a Perú, sin embargo se puede observar una pequeña anomalía positiva en la zona sur (fig 3).
 
 
 ###**Salinidad promedio durante los años 1959-2005 y anomalia para año 1991.**
@@ -114,7 +114,7 @@ sss_promedio=apply(sss[,,1:552], MARGIN = c(1,2), FUN=mean, na.rm = TRUE)
 image.map(lon, lat, sss_promedio)
 title("Promedio salinidad (PSU) 1959-2005")
 
-#Grafico promedio de a?o SSS 1991
+#Grafico promedio de año SSS 1991
 
 sss_ano1991=apply(sss[,,384:396], MARGIN = c(1,2), FUN = mean, na.rm = TRUE)
 anomalia_sss=sss_promedio-sss_ano1991
@@ -158,28 +158,95 @@ image.map(lon_lphy, lat_lphy, lphy_ano1991)
 title("Fito grande año 1991(molC. m-2.s-1)")
 ```
 
-  **Figura 5**: Promedio de la productividad de fitoplancton grande y pequeño durante los a?os 1959-2005 y la anomal?a durante el año 1991.  
+  **Figura 5**: Promedio de la productividad de fitoplancton grande y pequeño durante los a?os 1959-2005 y la anomalía durante el año 1991.  
 
 No hubo grandes anomalías de la productividad de fitoplancton grande y pequeño, sin embargo se puede ver una anomalía de fitoplancton grande en la zona centro-norte (fig 5).
 
 
+```{r}
+#Variacion temporal de la productividad y temperatura superficial del mar
+
+nc_sst=nc_open("datos/sst.nc4")
+nc_sss=nc_open("datos/sss.nc4")
+nc_lphy=nc_open("datos/lphy.nc4")
+nc_sphy=nc_open("datos/sphy.nc4")
+sst = ncvar_get(nc_sst, "to")
+lphy = ncvar_get(nc_lphy, "intpp")
+sphy = ncvar_get(nc_sphy, "intpp")
+sfito = sphy * 10^6
+lfito = lphy * 10^6
+totalfito = sfito + lfito
+tiempo= ncvar_get(nc_sst, "time")
+fito_9198=apply(totalfito[,,361:480], MARGIN=3,FUN=mean, na.rm=TRUE)
+sst_9198=apply(sst[,,361:480], MARGIN=3,FUN=mean, na.rm=TRUE)
+tiempo_9098= seq(1990,1998,0.067)
+fito_promedio=apply(totalfito, MARGIN=3,FUN=mean, na.rm=TRUE)
+
+sst_promedio=apply(sst, MARGIN=3,FUN=mean, na.rm=TRUE)
+
+plot(tiempo_9098, sst_9198,type="l", col="red",bty='l',las=1, xlab="Años(1990-1998)",ylab="temperatura", cex.axis=.75)
+par(new=TRUE)  
+
+plot(tiempo_9098, fito_9198,type="l", col="green",bty='n',xaxt="n",yaxt="n",las=1, xlab="",ylab="")
+
+axis(4, las=1, cex.axis=.75)
+
+legend("topleft",legend=c("Temperatura(°C)","Productividad(µmol C m-2 s-1)"),  col=c("red","green"),lty=1, cex=0.8,bty='n')
+
+title("Variación temporal de la SST y PRODUCTIVIDAD")
+abline(v=c(1997:1998),lty=1,col="blue")
+
+```
+**Figura 6**: Promedio de la productividad y temperatura superficial del mar durante los años 1990-1998.
+
+```{r}
+#hovmuller (1990-1998)
+hov = apply(sst[,,361:480], MARGIN=c(2,3), FUN = mean, na.rm=TRUE)
+
+image.plot(tiempo_9098, lat, t(hov), las=1, xlab="AÑOS", ylab="LATITUD")
+title("TEMPERATURA SUPERFICIAL DEL MAR 1990-1998")
+box()
+
+```
+**Figura 7**: Promedio de la temperatura superficial del mar durante los años 1990-1998.
+```{r}
+#Variacion mensual de la SST promedio
+year1997=tiempo[456:567]
+meses=rep(1:12,length=length(year1997))
+
+clima=array(dim=c(dim(sst)[1:2],12))
+
+for(i in 1:12){
+  clima[,,i]=apply(sst[,,meses==i],MARGIN=c(1,2),
+                  FUN=mean,na.rm=TRUE)}
+
+par(mfrow=c(4,3),mar=c(4,4,1,1))
+
+for(i in 1:12)
+  image.map(lon,lat,clima[,,i],main=paste(month.name[i]))
+
+```
+**Figura 8**: Temperatura superficial del mar promedio por mes durante los años 1959-2005.
+
+La temperatura superficial del mar varia durante el año dependiendo de la estación (fig 8), eso tiene un impacto en la productividad primaria, ya que durante los veranos ocurre la mayor productividad por la mayor irradiancia (figura 6); sin embargo cuando la temperatura superficial del mar aumenta varios grados por encima del promedio como en el Niño 1997 (fig 7) puede afectar negativamente la productividad (fig 6), ya que aguas calidas proviente del centro del pacífico traen menos nutrientes y condiciones negativas para los principales productores (diatomeas).
+
 #### Discusión
 
 El año 1991 tiene un pico positivo y negativo de temperatura superficial del mar normal respecto a los otros años que se dieron niños fuertes o extraordinarios como los 1997-1997 y 1982-1983 (Takahashi K, 2011). Sin embargo a finales de 1991 y durante 1992 se puede observar un pico de temperatura, donde se da la mayor intensidad del denominado Niño 1991-1992 (SENAMHI 2014; Tahakashi, 2016).  
-La temperatura y productividad fueron normales durante el año con un pico durante verano y una disminución durante invierno (Moran,2000). La salinidad también fue una variable normal, ya que tiende a disminuir con un aumento de la temperatura superficial del mar durante verano.
+La temperatura y productividad fueron normales durante el año con un pico durante verano y una disminución durante invierno (Morán,2000). La salinidad también fue una variable normal, ya que tiende a disminuir con un aumento de la temperatura superficial del mar durante verano.
 
-## Conclusión
+## Conclusiones
 
-No hubo grandes anomalias de temperatura superficial del mar, salinidad y productividad  durante el año 1991, por lo tanto es un año normal, sin embargo es previo a El Niño 1992. 
+- No hubo grandes anomalias de temperatura superficial del mar, salinidad y productividad  durante el año 1991, por lo tanto es un año normal, sin embargo es previo a El Niño 1992. 
+
+- Temperatura superficial del mar mayor al promedio causado por fenomenos como El Niño, puede tener un impacto negativo en la productividad primaria.
 
 ## Referencias
 
--(Morán O. 2000. Caracterásticas del ambiente marino frente a la costa peruana. Bol. Inst. Mar Perú 19(1-2):179-204.)[http://www.imarpe.gob.pe/paita/publicaciones/caract_del_amb_marino.pdf]
+-(Morán O. 2000. Caracteristicas del ambiente marino frente a la costa peruana. Bol. Inst. Mar Perú 19(1-2):179-204.)[http://www.imarpe.gob.pe/paita/publicaciones/caract_del_amb_marino.pdf]
 
 -(SENAMHI. 2014. El fenomeno El Niño en el Perú.)[http://www.minam.gob.pe/wp-content/uploads/2014/07/Dossier-El-Niño-Final_web.pdf]
 
 -(Takahashi, K. & Dewitte, B. 2016.Clim Dyn 46: 1627.)[https://link.springer.com/article/10.1007/s00382-015-2665-3]
 
 -(Takahashi, K., A. Montecinos, K. Goubanova y B. Dewitte,2011: ENSO regimes: Reinterpreting the canonical and Modoki El Niño, Geophysical Research Letters.)[http://onlinelibrary.wiley.com/doi/10.1029/2011GL047364/full]
-
-
